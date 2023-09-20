@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CS01EFC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230920070147_FirstMovies")]
-    partial class FirstMovies
+    [Migration("20230920073300_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,40 @@ namespace CS01EFC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CS01EFC.Models.Genre", b =>
+                {
+                    b.Property<int>("GenreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenreId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenreId");
+
+                    b.ToTable("Genre");
+
+                    b.HasData(
+                        new
+                        {
+                            GenreId = 1,
+                            Name = "Sci-fi"
+                        },
+                        new
+                        {
+                            GenreId = 2,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            GenreId = 3,
+                            Name = "Životopis"
+                        });
+                });
 
             modelBuilder.Entity("CS01EFC.Models.Movie", b =>
                 {
@@ -36,11 +70,16 @@ namespace CS01EFC.Migrations
                     b.Property<float?>("Duration")
                         .HasColumnType("real");
 
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MovieId");
+
+                    b.HasIndex("GenreId");
 
                     b.ToTable("Movies");
 
@@ -49,14 +88,32 @@ namespace CS01EFC.Migrations
                         {
                             MovieId = 1,
                             Duration = 3f,
+                            GenreId = 1,
                             Name = "Dune"
                         },
                         new
                         {
                             MovieId = 2,
                             Duration = 2.5f,
+                            GenreId = 3,
                             Name = "Oppenheimer"
                         });
+                });
+
+            modelBuilder.Entity("CS01EFC.Models.Movie", b =>
+                {
+                    b.HasOne("CS01EFC.Models.Genre", "Genre")
+                        .WithMany("Movies")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Genre");
+                });
+
+            modelBuilder.Entity("CS01EFC.Models.Genre", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }
