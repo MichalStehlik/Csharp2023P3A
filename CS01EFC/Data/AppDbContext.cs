@@ -54,6 +54,9 @@ namespace CS01EFC.Data
                     ).ToTable("ArtistMovies")
                     .HasKey(am => new { am.MovieId, am.ArtistId });
             });
+            modelBuilder.Entity<ArtistMovie>(options => {
+                options.HasData(new ArtistMovie { MovieId = 1, ArtistId = 3 });
+            });
         }
     }
 }

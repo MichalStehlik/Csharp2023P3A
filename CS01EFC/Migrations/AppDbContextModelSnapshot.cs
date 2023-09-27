@@ -79,11 +79,28 @@ namespace CS01EFC.Migrations
                     b.Property<int>("ArtistId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ArtistId1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MovieId1")
+                        .HasColumnType("int");
+
                     b.HasKey("MovieId", "ArtistId");
 
                     b.HasIndex("ArtistId");
 
+                    b.HasIndex("ArtistId1");
+
+                    b.HasIndex("MovieId1");
+
                     b.ToTable("ArtistMovies", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            MovieId = 1,
+                            ArtistId = 3
+                        });
                 });
 
             modelBuilder.Entity("CS01EFC.Models.Genre", b =>
@@ -169,11 +186,19 @@ namespace CS01EFC.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("CS01EFC.Models.Artist", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("ArtistId1");
+
                     b.HasOne("CS01EFC.Models.Movie", "Movie")
                         .WithMany()
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("CS01EFC.Models.Movie", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("MovieId1");
 
                     b.Navigation("Artist");
 
@@ -191,9 +216,19 @@ namespace CS01EFC.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("CS01EFC.Models.Artist", b =>
+                {
+                    b.Navigation("Roles");
+                });
+
             modelBuilder.Entity("CS01EFC.Models.Genre", b =>
                 {
                     b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("CS01EFC.Models.Movie", b =>
+                {
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

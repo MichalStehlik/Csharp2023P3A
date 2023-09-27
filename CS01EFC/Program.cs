@@ -27,6 +27,12 @@ foreach (Movie movie in movies3)
     Console.WriteLine(movie.Name + " " + movie.Genre!.Name);
 }
 
+List<Movie> movies4 = db.Movies.Include(x => x.Artists).ToList();
+foreach (Movie movie in movies3)
+{
+    Console.WriteLine(movie.Name + " " + movie.Artists!.Count);
+}
+
 Movie mov = db.Movies.Where(x => x.MovieId == 1).SingleOrDefault();
 db.Entry(mov).Reference(x => x.Genre);
 // Single, SingleOrDefault, First, FirstOrDefault, ToList
