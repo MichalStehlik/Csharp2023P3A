@@ -4,6 +4,7 @@ using CS01EFC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CS01EFC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230927063439_Artists")]
+    partial class Artists
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace CS01EFC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ArtistMovie", b =>
+                {
+                    b.Property<int>("ArtistsArtistId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoviesMovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArtistsArtistId", "MoviesMovieId");
+
+                    b.HasIndex("MoviesMovieId");
+
+                    b.ToTable("ArtistMovie");
+                });
 
             modelBuilder.Entity("CS01EFC.Models.Artist", b =>
                 {
@@ -45,7 +63,7 @@ namespace CS01EFC.Migrations
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artists");
+                    b.ToTable("Artist");
 
                     b.HasData(
                         new
@@ -69,21 +87,6 @@ namespace CS01EFC.Migrations
                             Gender = 2,
                             LastName = "Zendaya"
                         });
-                });
-
-            modelBuilder.Entity("CS01EFC.Models.ArtistMovie", b =>
-                {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArtistId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MovieId", "ArtistId");
-
-                    b.HasIndex("ArtistId");
-
-                    b.ToTable("ArtistMovies", (string)null);
                 });
 
             modelBuilder.Entity("CS01EFC.Models.Genre", b =>
@@ -161,23 +164,19 @@ namespace CS01EFC.Migrations
                         });
                 });
 
-            modelBuilder.Entity("CS01EFC.Models.ArtistMovie", b =>
+            modelBuilder.Entity("ArtistMovie", b =>
                 {
-                    b.HasOne("CS01EFC.Models.Artist", "Artist")
+                    b.HasOne("CS01EFC.Models.Artist", null)
                         .WithMany()
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("ArtistsArtistId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CS01EFC.Models.Movie", "Movie")
+                    b.HasOne("CS01EFC.Models.Movie", null)
                         .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasForeignKey("MoviesMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Artist");
-
-                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("CS01EFC.Models.Movie", b =>

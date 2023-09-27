@@ -18,7 +18,8 @@ namespace CS01EFC.Models
         public string Name { get; set; } = string.Empty;
         public float? Duration { get; set; }
         [ForeignKey("GenreId")]
-        public Genre Genre { get; set; }
+        public Genre? Genre { get; set; }
         public int GenreId { get; set; }
+        public ICollection<Artist>? Artists { get; set; }
     }
 }

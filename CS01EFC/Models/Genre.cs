@@ -11,7 +11,7 @@ namespace CS01EFC.Models
     {
         public int GenreId { get; set; }
         [Required]
-        public string Name { get; set; }
-        public ICollection<Movie> Movies { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public ICollection<Movie>? Movies { get; set; }
     }
 }
