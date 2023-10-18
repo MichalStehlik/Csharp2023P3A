@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui01First.MainPage">
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="0" x:Name="lblCounter" 
+                   Margin="10" VerticalOptions="Center" 
+                   HorizontalTextAlignment="Center" FontSize="Large"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                <Button Text="-" x:Name="btnDown" Clicked="btnDown_Clicked"/>
+                <Button Text="+" x:Name="btnUp" Clicked="btnUp_Clicked"/>
+                <Button Text="0" x:Name="btnSet0" Clicked="btnSet0_Clicked"/>
+                <Button Text="1" x:Name="btnSet1" Clicked="btnSet0_Clicked"/>
+                <Button Text="10" x:Name="btnSet10" Clicked="btnSet0_Clicked"/>
+                <Button Text="100" x:Name="btnSet100" Clicked="btnSet0_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
