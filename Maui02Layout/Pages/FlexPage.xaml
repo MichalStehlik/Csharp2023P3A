@@ -5,15 +5,14 @@
              Title="FlexPage">
     <FlexLayout 
         Direction="Column" 
-        AlignContent="SpaceBetween" 
-        JustifyContent="Center">
-        <Label 
+        BackgroundColor="IndianRed"
+        AlignContent="Center" 
+        JustifyContent="SpaceAround">
+        <Button 
             Text="Flex"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
+            />
+        <Button 
             Text="Flex"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            />
     </FlexLayout>
 </ContentPage>

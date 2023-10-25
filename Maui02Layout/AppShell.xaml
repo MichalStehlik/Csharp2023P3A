@@ -39,5 +39,9 @@
     <ShellContent 
         Title="Absolute layout" 
         ContentTemplate="{DataTemplate pages:AbsolutePage}"
+    />
+    <ShellContent 
+        Title="Uniform grid" 
+        ContentTemplate="{DataTemplate pages:UniformPage}"
 />
 </Shell>
