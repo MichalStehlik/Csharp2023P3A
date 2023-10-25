@@ -6,56 +6,30 @@
     xmlns:local="clr-namespace:Maui02Layout"
     xmlns:pages="clr-namespace:Maui02Layout.Pages"
     Shell.FlyoutBehavior="Flyout">
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Layout">
+    <TabBar FlyoutDisplayOptions="AsMultipleItems">
+        <Tab Title="Grid">
             <ShellContent 
-                Title="Grid layout menu" 
+                Title="Grid layout item" 
                 ContentTemplate="{DataTemplate pages:GridPage}"
             />
+        </Tab>
+        <Tab Title="Stack">
             <ShellContent 
-                Title="Stack layout menu" 
+                Title="Stack layout item" 
                 ContentTemplate="{DataTemplate pages:StackPage}"
             />
         </Tab>
-        <Tab Title="Layout 2">
-            <ShellContent 
-                Title="Grid" 
-                ContentTemplate="{DataTemplate pages:GridPage}"
-            />
-            <ShellContent 
-                Title="Stack" 
-                ContentTemplate="{DataTemplate pages:StackPage}"
-            />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Layout">
-            <ShellContent 
-                Title="Grid layout menu" 
-                ContentTemplate="{DataTemplate pages:GridPage}"
-            />
-            <ShellContent 
-                Title="Stack layout menu" 
-                ContentTemplate="{DataTemplate pages:StackPage}"
-            />
-        </Tab>
-        <Tab Title="Layout 2">
-            <ShellContent 
-                Title="Grid" 
-                ContentTemplate="{DataTemplate pages:GridPage}"
-            />
-            <ShellContent 
-                Title="Stack" 
-                ContentTemplate="{DataTemplate pages:StackPage}"
-            />
-        </Tab>
-    </FlyoutItem>
+    </TabBar>
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent 
-        Title="Grid" 
+        Title="Stack layout item" 
+        ContentTemplate="{DataTemplate pages:StackPage}"
+    />
+    <ShellContent 
+        Title="Grid layout item" 
         ContentTemplate="{DataTemplate pages:GridPage}"
     />
 </Shell>
