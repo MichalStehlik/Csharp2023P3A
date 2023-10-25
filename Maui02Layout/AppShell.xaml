@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Maui02Layout"
     xmlns:pages="clr-namespace:Maui02Layout.Pages"
-    Shell.FlyoutBehavior="Disabled">
-    <FlyoutItem>
+    Shell.FlyoutBehavior="Flyout">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <Tab Title="First">
             <ShellContent 
                 Title="Grid" 
@@ -23,14 +23,17 @@
                 ContentTemplate="{DataTemplate pages:GridPage}"
             />
             <ShellContent 
-        Title="Stack" 
-        ContentTemplate="{DataTemplate pages:StackPage}"
-    />
+                Title="Stack" 
+                ContentTemplate="{DataTemplate pages:StackPage}"
+            />
         </Tab>
     </FlyoutItem>
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
+    <ShellContent 
+        Title="Grid" 
+        ContentTemplate="{DataTemplate pages:GridPage}"
+    />
 </Shell>
