@@ -1,8 +1,8 @@
 namespace Maui02Layout.Pages;
 
-public partial class NewPage1 : ContentPage
+public partial class StackPage : ContentPage
 {
-	public NewPage1()
+	public StackPage()
 	{
 		InitializeComponent();
 	}

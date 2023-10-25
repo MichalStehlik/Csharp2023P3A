@@ -6,7 +6,28 @@
     xmlns:local="clr-namespace:Maui02Layout"
     xmlns:pages="clr-namespace:Maui02Layout.Pages"
     Shell.FlyoutBehavior="Disabled">
-
+    <FlyoutItem>
+        <Tab Title="First">
+            <ShellContent 
+                Title="Grid" 
+                ContentTemplate="{DataTemplate pages:GridPage}"
+            />
+            <ShellContent 
+                Title="Stack" 
+                ContentTemplate="{DataTemplate pages:StackPage}"
+            />
+        </Tab>
+        <Tab Title="Second">
+            <ShellContent 
+                Title="Grid" 
+                ContentTemplate="{DataTemplate pages:GridPage}"
+            />
+            <ShellContent 
+        Title="Stack" 
+        ContentTemplate="{DataTemplate pages:StackPage}"
+    />
+        </Tab>
+    </FlyoutItem>
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
