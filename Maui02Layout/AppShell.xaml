@@ -25,11 +25,19 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent 
-        Title="Stack layout item" 
+        Title="Stack layout" 
         ContentTemplate="{DataTemplate pages:StackPage}"
     />
     <ShellContent 
-        Title="Grid layout item" 
+        Title="Grid layout" 
         ContentTemplate="{DataTemplate pages:GridPage}"
     />
+    <ShellContent 
+        Title="Flex layout" 
+        ContentTemplate="{DataTemplate pages:FlexPage}"
+    />
+    <ShellContent 
+        Title="Absolute layout" 
+        ContentTemplate="{DataTemplate pages:AbsolutePage}"
+/>
 </Shell>

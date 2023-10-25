@@ -3,10 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui02Layout.Pages.GridPage"
              Title="GridPage">
-    <VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="1" Grid.Column="0" Text="1"/>
+        <Button Grid.Row="2" Grid.Column="1" Text="2"/>
         <Label 
-            Text="Grid"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Text="X"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
+            />
+        <Entry VerticalOptions="Center" HorizontalOptions="Center"/>
+    </Grid>
 </ContentPage>
