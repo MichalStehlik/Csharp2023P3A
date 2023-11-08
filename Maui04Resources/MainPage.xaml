@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Maui04Resources.MainPage">
+    <ContentPage.Resources>
+        <Color x:Key="MainColor">#ff00ff</Color>
+        <sys:String x:Key="AppName">Super aplikace</sys:String>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="{StaticResource AppName}"
+                TextColor="{StaticResource MainColor}"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                TextColor="{StaticResource MainColor}"
+                HorizontalOptions="Center" />
+            <Image HeightRequest="100">
+                <Image.Source>
+                    <FontImageSource FontFamily="Icons"
+                                     Color="Black"
+                                     Glyph="&#xe911;"
+                                     Size="100" />
+                </Image.Source>
+            </Image>
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
