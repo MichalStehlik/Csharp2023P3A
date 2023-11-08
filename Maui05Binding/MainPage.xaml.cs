@@ -4,7 +4,6 @@ namespace Maui05Binding
 {
     public partial class MainPage : ContentPage
     {
-        private Models.Person _borivoj;
         public Models.Person Borivoj { get; set; }
         public MainPage()
         {
@@ -15,7 +14,7 @@ namespace Maui05Binding
             lblPersonAge.BindingContext = Borivoj;
             lblPersonAge.SetBinding(Label.TextProperty, nameof(Models.Person.Age));
             entPersonName.BindingContext = Borivoj;
-            entPersonName.SetBinding(Entry.TextProperty, nameof(Models.Person.Firstname));
+            entPersonName.SetBinding(Entry.TextProperty, nameof(Models.Person.Firstname), BindingMode.TwoWay);
         }
 
         private void sliValue_ValueChanged(object sender, ValueChangedEventArgs e)
