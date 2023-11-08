@@ -34,6 +34,13 @@
                     <Entry Text="{Binding Source={StaticResource Adam},Path=Firstname, Mode=TwoWay}" />
                 </VerticalStackLayout>
             </Frame>
+            <Frame>
+                <VerticalStackLayout>
+                    <Label Text="" x:Name="lblPersonName" />
+                    <Label Text="" x:Name="lblPersonAge" />
+                    <Entry Text="" x:Name="entPersonName"/>
+                </VerticalStackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 

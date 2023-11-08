@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Maui05Binding.Models
 {
-    internal class Person: INotifyPropertyChanged
+    public class Person: INotifyPropertyChanged
     {
         private string _firstname;
         private int _age;
