@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui06MVVM.Views.ColorsPage"
+             xmlns:vm="clr-namespace:Maui06MVVM.ViewModels"
+             Title="ColorsPage">
+    <VerticalStackLayout>
+        <Frame>
+            <Frame.BindingContext>
+                <vm:ColorsViewModel />
+            </Frame.BindingContext>
+            <VerticalStackLayout>
+                <Label Text="Red"/>
+                <Label Text="{Binding Red}"/>
+                <Slider Value="{Binding Red}" Maximum="255" Minimum="0"/>
+                <Label Text="Green"/>
+                <Label Text="{Binding Green}"/>
+                <Slider Value="{Binding Green}" Maximum="255" Minimum="0"/>
+                <Label Text="Blue"/>
+                <Label Text="{Binding Source={x:Reference sliBlue}, Path=Value}"/>
+                <Slider Value="{Binding Blue}" Maximum="255" Minimum="0" x:Name="sliBlue"/>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>
