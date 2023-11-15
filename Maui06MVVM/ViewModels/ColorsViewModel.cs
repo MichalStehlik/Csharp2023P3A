@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Maui06MVVM.ViewModels
 {
-    internal class ColorsViewModel: INotifyPropertyChanged
+    internal class ColorsViewModel : INotifyPropertyChanged
     {
         private int _red;
         private int _green;
         private int _blue;
+        private Color _color;
 
         public ColorsViewModel()
         {
@@ -21,17 +22,20 @@ namespace Maui06MVVM.ViewModels
             Blue = 200;
         }
 
-        public int Red 
+        public int Red
         {
-            get 
+            get
             {
                 return _red;
-            } 
+            }
             set
             {
                 _red = value;
                 OnPropertyChanged();
-            } 
+                OnPropertyChanged("Color");
+                OnPropertyChanged("Luminance");
+                OnPropertyChanged("Brightness");
+            }
         }
         public int Green
         {
@@ -43,6 +47,9 @@ namespace Maui06MVVM.ViewModels
             {
                 _green = value;
                 OnPropertyChanged();
+                OnPropertyChanged("Color");
+                OnPropertyChanged("Luminance");
+                OnPropertyChanged("Brightness");
             }
         }
 
@@ -55,9 +62,41 @@ namespace Maui06MVVM.ViewModels
             set
             {
                 _blue = value;
+                Color2 = new Color(Red, value, Green);
+                OnPropertyChanged();
+                OnPropertyChanged("Color");
+                OnPropertyChanged("Luminance");
+                OnPropertyChanged("Brightness");
+            }
+        }
+
+        public Color Color2
+        {
+            get
+            {
+                return _color;
+            }
+            set
+            {
+                _color = value;
                 OnPropertyChanged();
             }
         }
+        public int Luminance
+        {
+            get { return (int)(0.2126 * Red + 0.7152 * Green + 0.0722 * Blue); }
+        }
+
+        public int Brightness
+        {
+            get { return (Red + Green + Blue) / 3; }
+        }
+
+        public Color Color
+        {
+            get { return new Color(Red, Green, Blue); }
+        }
+
         #region MVVM
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propName = null)

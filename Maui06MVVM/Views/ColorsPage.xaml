@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui06MVVM.Views.ColorsPage"
              xmlns:vm="clr-namespace:Maui06MVVM.ViewModels"
+             xmlns:conv="clr-namespace:Maui06MVVM.Converters"
              Title="ColorsPage">
     <VerticalStackLayout>
         <Frame>
@@ -19,6 +20,10 @@
                 <Label Text="Blue"/>
                 <Label Text="{Binding Source={x:Reference sliBlue}, Path=Value}"/>
                 <Slider Value="{Binding Blue}" Maximum="255" Minimum="0" x:Name="sliBlue"/>
+                <Border HeightRequest="20" BackgroundColor="{Binding Color}"/>
+                <Label Text="{Binding Color}" />
+                <Label Text="{Binding Brightness}" />
+                <Label Text="{Binding Luminance}" />
             </VerticalStackLayout>
         </Frame>
     </VerticalStackLayout>
