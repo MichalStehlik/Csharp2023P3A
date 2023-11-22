@@ -14,14 +14,63 @@ namespace Maui06MVVM.ViewModels
         private int _green;
         private int _blue;
         private Color _color;
+        private bool _lock;
+        private int _number;
 
+        public Command RandomizeColor { get; set; }
+        public Command<int> RandomizeColorLimit { get; set; }
         public ColorsViewModel()
         {
             Red = 100;
             Green = 100;
             Blue = 200;
+            Lock = true;
+            Number = 255;
+            RandomizeColor = new Command(
+                () => {
+                    Red = Random.Shared.Next(255);
+                    Green = Random.Shared.Next(255);
+                    Blue = Random.Shared.Next(255);
+                },
+                () => { return Lock; }
+            );
+            RandomizeColorLimit = new Command<int>(
+                (x) => {
+                    Red = Random.Shared.Next(x);
+                    Green = Random.Shared.Next(x);
+                    Blue = Random.Shared.Next(x);
+                },
+                (x) => { return Lock; }
+            );
         }
 
+        public bool Lock
+        {
+            get
+            {
+                return _lock;
+            }
+            set
+            {
+                _lock = value;
+                OnPropertyChanged();
+                RandomizeColor?.ChangeCanExecute();
+                RandomizeColorLimit?.ChangeCanExecute();
+            }
+        }
+
+        public int Number
+        {
+            get
+            {
+                return _number;
+            }
+            set
+            {
+                _number = value;
+                OnPropertyChanged();
+            }
+        }
         public int Red
         {
             get

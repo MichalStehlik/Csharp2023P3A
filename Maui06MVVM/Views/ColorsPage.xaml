@@ -27,6 +27,11 @@
                 <Label Text="{Binding Color, Converter={StaticResource cthex}}" />
                 <Label Text="{Binding Brightness}" />
                 <Label Text="{Binding Luminance}" />
+                <Button Text="Random" Command="{Binding RandomizeColor}"/>
+                <CheckBox IsChecked="{Binding Lock}" />
+                <Label Text="{Binding Lock}" />
+                <Slider Value="{Binding Number}" Maximum="255" Minimum="0" />
+                <Button Text="Random" Command="{Binding RandomizeColorLimit}" CommandParameter="{Binding Number}"/>
             </VerticalStackLayout>
         </Frame>
     </VerticalStackLayout>
