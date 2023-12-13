@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui08Colections.Views.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Label Text="{Binding X}" />
+        <Button Grid.Row="1" Text="Create" x:Name="btnCreate" Clicked="btnCreate_Clicked"/>
+        <Button Grid.Row="2"  Text="Detail" x:Name="btnDetail" Clicked="btnDetail_Clicked"/>
+    </Grid>
+
+</ContentPage>
