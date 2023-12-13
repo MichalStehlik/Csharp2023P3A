@@ -4,7 +4,13 @@
              x:Class="Maui08Colections.Views.CreatePage"
              Title="CreatePage">
     <VerticalStackLayout>
-        <Label Text="{Binding X}" />
+        <Label Text="Name" />
+        <Entry Text="{Binding Item.Name}" />
+        <Label Text="Amount" />
+        <Entry Text="{Binding Item.Amount}" />
+        <Label Text="I have it" />
+        <Switch IsToggled="{Binding Item.Obtained}" />
+        <Button Text="Create" x:Name="btnCreate" Clicked="btnCreate_Clicked" Command="{Binding CreateCommand}"/>
         <Button Text="Back" x:Name="btnBack" Clicked="btnBack_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -8,9 +8,35 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Label Text="{Binding X}" />
-        <Button Grid.Row="1" Text="Create" x:Name="btnCreate" Clicked="btnCreate_Clicked"/>
-        <Button Grid.Row="2"  Text="Detail" x:Name="btnDetail" Clicked="btnDetail_Clicked"/>
+        <ListView 
+            ItemsSource="{Binding Items}" 
+            SelectedItem="{Binding Selected}" 
+            x:Name="lstList"
+            ItemSelected="lstList_ItemSelected"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Amount}" Padding="3"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" Padding="3"/>
+                            <CheckBox Grid.Column="2" IsChecked="{Binding Obtained}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <HorizontalStackLayout Grid.Row="1">
+            <Button Text="Create" x:Name="btnCreate" Clicked="btnCreate_Clicked"/>
+            <Button Text="Detail" x:Name="btnDetail" Clicked="btnDetail_Clicked"/>
+            <Button Text="FFFFF" Command="{Binding CreateCommand}"/>
+        </HorizontalStackLayout>
+        
     </Grid>
 
 </ContentPage>

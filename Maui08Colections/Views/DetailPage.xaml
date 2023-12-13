@@ -4,7 +4,12 @@
              x:Class="Maui08Colections.Views.DetailPage"
              Title="DetailPage">
     <VerticalStackLayout>
-        <Label Text="{Binding X}" />
+        <Label Text="Name" />
+        <Entry Text="{Binding Selected.Name}" />
+        <Label Text="Amount" />
+        <Entry Text="{Binding Selected.Amount}" />
+        <Label Text="I have it" />
+        <Switch IsToggled="{Binding Selected.Obtained}" />
         <Button Text="Back" x:Name="btnBack" Clicked="btnBack_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -12,4 +12,9 @@ public partial class CreatePage : ContentPage
     {
         Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { });
     }
+
+    private void btnCreate_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("..", true, new Dictionary<string, object> { });
+    }
 }
