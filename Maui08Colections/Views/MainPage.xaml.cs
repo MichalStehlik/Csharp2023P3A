@@ -1,4 +1,5 @@
 ﻿using Maui08Colections.Models;
+using Maui08Colections.ViewModels;
 
 namespace Maui08Colections.Views
 {
@@ -31,6 +32,18 @@ namespace Maui08Colections.Views
             if (selectedItem != null)
             {
                 Shell.Current.GoToAsync(nameof(DetailPage), true, new Dictionary<string, object> { ["Item"] = selectedItem });
+            }
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (BindingContext is MainViewModel)
+            {
+                var vm = BindingContext as MainViewModel;
+                if (vm.Selected != null) 
+                {
+                    vm.UpdateCommand.Execute(vm.Selected);
+                }
             }
         }
     }

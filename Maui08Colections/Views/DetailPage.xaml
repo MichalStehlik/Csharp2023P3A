@@ -10,6 +10,7 @@
         <Entry Text="{Binding Selected.Amount}" />
         <Label Text="I have it" />
         <Switch IsToggled="{Binding Selected.Obtained}" />
+        <Button Text="Save" x:Name="btnSave" Clicked="btnBack_Clicked" Command="{Binding UpdateCommand}" CommandParameter="{Binding Selected}"/>
         <Button Text="Back" x:Name="btnBack" Clicked="btnBack_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

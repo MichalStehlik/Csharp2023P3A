@@ -8,6 +8,10 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <ListView 
             ItemsSource="{Binding Items}" 
             SelectedItem="{Binding Selected}" 
@@ -25,7 +29,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Text="{Binding Amount}" Padding="3"/>
                             <Label Grid.Column="1" Text="{Binding Name}" Padding="3"/>
-                            <CheckBox Grid.Column="2" IsChecked="{Binding Obtained}" />
+                            <CheckBox Grid.Column="2" IsChecked="{Binding Obtained}" CheckedChanged="CheckBox_CheckedChanged"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -34,9 +38,19 @@
         <HorizontalStackLayout Grid.Row="1">
             <Button Text="Create" x:Name="btnCreate" Clicked="btnCreate_Clicked"/>
             <Button Text="Detail" x:Name="btnDetail" Clicked="btnDetail_Clicked"/>
-            <Button Text="FFFFF" Command="{Binding CreateCommand}"/>
+            <Button Text="Delete" Command="{Binding DeleteCommand}" CommandParameter="{Binding Selected}"/>
+            <Button Text="Reload" Command="{Binding ReloadCommand}"/>
         </HorizontalStackLayout>
-        
+        <VerticalStackLayout Grid.Column="1" Grid.RowSpan="3">
+            <Label Text="Název" />
+            <Label Text="{Binding Selected.Name}" />
+            <Label Text="Množství" />
+            <Label Text="{Binding Selected.Amount}" />
+            <Label Text="Mám to?" />
+            <Label Text="{Binding Selected.Obtained}" />
+            <Label Text="ID" />
+            <Label Text="{Binding Selected.Id}" />
+        </VerticalStackLayout>
     </Grid>
 
 </ContentPage>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using SQLite;
 
 namespace Maui08Colections.Models
 {
@@ -15,7 +16,7 @@ namespace Maui08Colections.Models
         private string _name;
         private int _amount;
         private bool _obtained;
-
+        [PrimaryKey, AutoIncrement]
         public int Id
         {
             get
